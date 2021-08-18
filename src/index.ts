@@ -14,6 +14,10 @@ import session from 'express-session';
 import connectRedis from 'connect-redis';
 import { MyContext } from "./types";
 
+import {
+  ApolloServerPluginLandingPageGraphQLPlayground
+} from "apollo-server-core";
+
 const main = async () => {
   const orm = await MikroORM.init(microConfig);
   await orm.getMigrator().up();
@@ -48,6 +52,9 @@ const main = async () => {
       resolvers: [HelloResolver,PostResolver, UserResolver],
       validate: false,
     }),
+    plugins: [
+      ApolloServerPluginLandingPageGraphQLPlayground(),
+    ],
     context: ({ req, res }): MyContext => ({ em: orm.em, req, res })
   });
 
