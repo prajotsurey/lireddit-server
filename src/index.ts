@@ -18,6 +18,8 @@ import {
   ApolloServerPluginLandingPageGraphQLPlayground
 } from "apollo-server-core";
 import cors from 'cors';
+import { User } from "./entites/User";
+// import { sendEmail } from "./utils/sendEmail";
 
 
 const main = async () => {
