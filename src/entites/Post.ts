@@ -9,12 +9,12 @@ export class Post extends BaseEntity{
   id!: number;
   
   @Field(() => String)
-  @CreateDateColumn({type: "date"})  
-  createdAt = Date;
+  @CreateDateColumn()  
+  createdAt: Date;
 
   @Field(() => String)
   @UpdateDateColumn()
-  updatedAt = Date;
+  updatedAt: Date;
   
   @Field()
   @Column()  

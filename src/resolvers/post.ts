@@ -1,6 +1,5 @@
 import { Post } from "../entites/Post";
-import { MyContext } from "../types";
-import { Query,Mutation, Resolver, Ctx, Arg } from "type-graphql";
+import { Query,Mutation, Resolver, Arg } from "type-graphql";
 
 @Resolver()
 export class PostResolver {
@@ -17,6 +16,7 @@ export class PostResolver {
   @Mutation(() => Post)
   async createPost(
     @Arg('title') title:string,) : Promise<Post> {
+      console.log("title : ",title)
     return Post.create({ title }).save();
   }
 
