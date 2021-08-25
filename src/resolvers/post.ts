@@ -1,5 +1,5 @@
 import { Post } from "../entites/Post";
-import { Query,Mutation, Resolver, Arg, InputType, Field, Ctx, UseMiddleware, Int } from "type-graphql";
+import { Query,Mutation, Resolver, Arg, InputType, Field, Ctx, UseMiddleware, Int, FieldResolver, Root } from "type-graphql";
 import { MyContext } from "../types";
 import { isAuth } from "../middleware/isAuth";
 import { getConnection } from "typeorm";
@@ -12,8 +12,13 @@ class PostInput {
   text: string
 }
 
-@Resolver()
+@Resolver(Post)
 export class PostResolver {
+  @FieldResolver(() => String)
+  textSnippet(@Root() root: Post) {
+    return root.text.slice(0, 50);
+  }
+
   @Query(() => [Post])
   async posts(
     @Arg('limit', () => Int) limit: number,
