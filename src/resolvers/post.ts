@@ -32,7 +32,7 @@ export class PostResolver {
         .take(realLimit);
       if (cursor) {
         qb.where('"createdAt" < :cursor', { 
-          cursor: new Date (parseInt(cursor)) 
+          cursor: new Date(parseInt(cursor)) 
         });
       }
 ;
