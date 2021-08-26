@@ -36,9 +36,7 @@ export class UserResolver {
     if(req.session.userId === user.id ) {
       return user.email;
     }
-    return {
-      ""
-    }
+    return ""
   }
 
   @Mutation( () => UserResponse)
