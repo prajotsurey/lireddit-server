@@ -20,6 +20,7 @@ import { Post } from "./entites/Post";
 import { User } from "./entites/User";
 import path from "path";
 import { Updoot } from "./entites/Updoot";
+import { createUserLoader } from "./utils/createUserLoader";
 
 const main = async () => {
   const conn = await createConnection({
@@ -74,7 +75,12 @@ const main = async () => {
     plugins: [
       ApolloServerPluginLandingPageGraphQLPlayground(),
     ],
-    context: ({ req, res }) => ({ req, res, redis })
+    context: ({ req, res }) => ({
+      req,
+      res,
+      redis,
+      userLoader: createUserLoader(),
+    }),
   });
 
   await apolloServer.start();
