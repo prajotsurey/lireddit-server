@@ -1,7 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { ObjectType, Field } from "type-graphql";
-import { User } from './User';
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 import { Post } from './Post';
+import { User } from './User';
 
 @Entity()
 export class Updoot extends BaseEntity{
