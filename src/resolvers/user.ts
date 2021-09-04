@@ -119,10 +119,10 @@ export class UserResolver {
   me(
     @Ctx() { req}: MyContext
   ) {
+    console.log(req.session)
     if(!req.session.userId) {
       return null;
     }
-
     return User.findOne(req.session.userId);
   }
 
